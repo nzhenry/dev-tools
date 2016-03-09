@@ -1,3 +1,7 @@
+#####################################################################
+# This script will provision a new jenkins droplet in digital ocean #
+#####################################################################
+
 # set digital ocean API key
 API_KEY=$1
 

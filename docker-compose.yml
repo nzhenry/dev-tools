@@ -17,3 +17,6 @@ services:
       - jenkins_home:/var/jenkins_home
     depends_on:
       - proxy
+
+volumes:
+  jenkins_home:

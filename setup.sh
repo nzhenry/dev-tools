@@ -1,3 +1,7 @@
+####################################################
+# Don't run this script manually!                  #
+# The parent script setup.sh will do that for you. #
+####################################################
 
 # make sure the package manager is up to date
 apt-get update &&
