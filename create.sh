@@ -23,5 +23,4 @@ docker-machine create --driver digitalocean --digitalocean-access-token ${API_KE
 docker-machine ssh jenkins-host \
 	"git clone https://github.com/nzhenry/docker-jenkins.git && \
 	cd /root/docker-jenkins && \
-	sh setup.sh && \
-	docker-compose up"
+	sh setup.sh"
