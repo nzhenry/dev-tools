@@ -21,5 +21,5 @@ openssl req -subj '/CN=jenkins.livehen.com/O=Henry Johnson/C=CA' \
 # install ssl proxy
 docker run -d -p 80:80 -p 443:443 -v /root/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy &&
 
-# install jenkins with docker
-docker run -d -e VIRTUAL_HOST=jenkins.livehen.com -e VIRTUAL_PORT=8080 -v jenkins_home:/var/jenkins_home killercentury/jenkins-dind
+# install jenkins
+docker run -d -e VIRTUAL_HOST=jenkins.livehen.com -e VIRTUAL_PORT=8080 -v jenkins_home:/var/jenkins_home jenkins
