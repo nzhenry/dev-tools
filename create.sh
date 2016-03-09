@@ -17,7 +17,7 @@ fi
 #curl -X GET -H "Content-Type: application/json" -H "Authorization: Bearer ${API_KEY}" "https://api.digitalocean.com/v2/sizes" | python -m json.tool
 
 # create digital ocean droplet
-docker-machine create --driver digitalocean --digitalocean-access-token ${API_KEY} --digitalocean-region tor1 --digitalocean-size 512mb jenkins-host
+docker-machine create --driver digitalocean --digitalocean-access-token ${API_KEY} --digitalocean-region tor1 --digitalocean-size 1gb jenkins-host &&
 
 # create jenkins app
 docker-machine ssh jenkins-host \

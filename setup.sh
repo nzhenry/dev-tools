@@ -13,13 +13,13 @@ apt-get install -y haveged &&
 mkdir /root/certs &&
 
 # create ssl certs
-openssl req -subj '/CN=hjohnsondev.com/O=Henry Johnson/C=CA' \
+openssl req -subj '/CN=jenkins.livehen.com/O=Henry Johnson/C=CA' \
 	-new -newkey rsa:2048 -days 365 -nodes -x509 \
-	-keyout /root/certs/hjohnsondev.com.key \
-	-out /root/certs/hjohnsondev.com.crt &&
+	-keyout /root/certs/jenkins.livehen.com.key \
+	-out /root/certs/jenkins.livehen.com.crt &&
 
 # install ssl proxy
 docker run -d -p 80:80 -p 443:443 -v /root/certs:/etc/nginx/certs -v /var/run/docker.sock:/tmp/docker.sock:ro jwilder/nginx-proxy &&
 
 # install jenkins with docker
-docker run -d -e VIRTUAL_HOST=jenkins.hjohnsondev.com -e VIRTUAL_PORT=8080 -v jenkins_home:/var/jenkins_home killercentury/jenkins-dind
+docker run -d -e VIRTUAL_HOST=jenkins.livehen.com -e VIRTUAL_PORT=8080 -v jenkins_home:/var/jenkins_home killercentury/jenkins-dind
