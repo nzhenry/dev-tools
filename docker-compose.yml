@@ -12,7 +12,7 @@ jenkins:
   image: jenkins-img
   restart: always
   volumes:
-  - jenkins_home:/var/lib/jenkins
+  - jenkins_home:/var/jenkins_home
   - test_reports:/var/local/test_reports
   - /var/run/docker.sock:/var/run/docker.sock
   environment:
