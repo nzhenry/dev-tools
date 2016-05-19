@@ -1,7 +1,15 @@
-FROM killercentury/jenkins-dind
+FROM jenkins
 
-RUN apt-get update && apt-get install -y make
+USER root
+RUN apt-get -y update && apt-get -y install \
+    docker.io \
+    make
 
-RUN cat /etc/supervisor/conf.d/supervisord.conf > /etc/supervisor/conf.d/temp
-RUN sed s/"command=java -jar"/"command=java -jar -Dhudson.model.DirectoryBrowserSupport.CSP=\"sandbox allow-scripts; default-src \'self\' \'unsafe-inline\' data:;\""/ /etc/supervisor/conf.d/temp > /etc/supervisor/conf.d/supervisord.conf
-RUN rm /etc/supervisor/conf.d/temp
+# Install Docker Compose
+ENV DOCKER_COMPOSE_VERSION 1.7.1
+
+RUN curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > /usr/local/bin/docker-compose
+
+RUN chmod +x /usr/local/bin/docker-compose
+
+ENV JAVA_OPTS -Dhudson.model.DirectoryBrowserSupport.CSP=\"sandbox allow-scripts; default-src \'self\' \'unsafe-inline\' data:;\"
