@@ -6,7 +6,7 @@ nginx:
   - "443:443"
   volumes:
   - /root/certs:/etc/nginx/certs
-	- /var/run/docker.sock:/tmp/docker.sock:ro
+  - /var/run/docker.sock:/tmp/docker.sock:ro
 
 jenkins:
   image: jenkins-img
