@@ -1,5 +1,6 @@
 nginx:
   image: jwilder/nginx-proxy
+  restart: always
   ports:
   - "80:80"
   - "443:443"
@@ -9,6 +10,7 @@ nginx:
 
 jenkins:
   image: jenkins-img
+  restart: always
   volumes:
   - jenkins_home:/var/lib/jenkins
   - test_reports:/var/local/test_reports
