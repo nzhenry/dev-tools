@@ -18,3 +18,23 @@ jenkins:
   environment:
   - VIRTUAL_HOST=jenkins.livehen.com
   - VIRTUAL_PORT=8080
+
+postgres:
+  image: postgres
+  restart: always
+  volumes:
+  - jira_postgres:/var/lib/postgresql/data postgres
+
+jira:
+  image: jira
+  restart: always
+  volumes:
+  - jira_home:/var/atlassian/jira
+  environment:
+  - VIRTUAL_HOST=jira.livehen.com
+  - VIRTUAL_PORT=8080
+  - X_PROXY_NAME=jira.livehen.com
+  - X_PROXY_PORT=443
+  - X_PROXY_SCHEME=https
+  links:
+  - postgres
