@@ -26,7 +26,7 @@ postgres:
   - jira_postgres:/var/lib/postgresql/data postgres
 
 jira:
-  image: jira
+  image: cptactionhank/atlassian-jira:latest
   restart: always
   volumes:
   - jira_home:/var/atlassian/jira
