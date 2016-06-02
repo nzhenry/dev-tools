@@ -12,8 +12,8 @@ jenkins:
   image: jenkins-img
   restart: always
   volumes:
-  - jenkins_home:/var/jenkins_home
-  - test_reports:/var/local/test_reports
+  - /root/docker-volumes/jenkins_home:/var/jenkins_home
+  - /root/docker-volumes/test_reports:/var/local/test_reports
   - /var/run/docker.sock:/var/run/docker.sock
   environment:
   - VIRTUAL_HOST=jenkins.livehen.com
@@ -23,7 +23,7 @@ postgres:
   image: postgres
   restart: always
   volumes:
-  - jira_postgres:/var/lib/postgresql/data postgres
+  - /root/docker-volumes/jira_postgres:/var/lib/postgresql/data postgres
 
 jira:
   image: cptactionhank/atlassian-jira:latest
