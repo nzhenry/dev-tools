@@ -18,11 +18,10 @@ openssl req -subj '/CN=jenkins.livehen.com/O=Henry Johnson/C=CA' \
 	-keyout /root/certs/jenkins.livehen.com.key \
 	-out /root/certs/jenkins.livehen.com.crt &&
 
-# install ssl proxy
-docker run -d -p 80:80 -p 443:443 \
-	-v /root/certs:/etc/nginx/certs \
-	-v /var/run/docker.sock:/tmp/docker.sock:ro \
-	jwilder/nginx-proxy &&
+openssl req -subj '/CN=jira.livehen.com/O=Henry Johnson/C=CA' \
+	-new -newkey rsa:2048 -days 365 -nodes -x509 \
+	-keyout /root/certs/jira.livehen.com.key \
+	-out /root/certs/jira.livehen.com.crt &&
 
 # install jenkins with docker
 docker build -t jenkins-img .
