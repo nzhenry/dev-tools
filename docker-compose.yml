@@ -15,6 +15,7 @@ jenkins:
   - /root/docker-volumes/jenkins_home:/var/jenkins_home
   - /root/docker-volumes/test_reports:/var/local/test_reports
   - /var/run/docker.sock:/var/run/docker.sock
+  - /etc/localtime:/etc/localtime
   environment:
   - VIRTUAL_HOST=jenkins.livehen.com
   - VIRTUAL_PORT=8080
@@ -28,6 +29,8 @@ postgres:
 jira:
   image: cptactionhank/atlassian-jira:latest
   restart: always
+  volumes:
+  - /etc/localtime:/etc/localtime
   environment:
   - VIRTUAL_HOST=jira.livehen.com
   - VIRTUAL_PORT=8080
